@@ -9,9 +9,13 @@ path('', views.home, name='home'),
 path('privacy/', views.privacy, name='privacy'),
 path('contact/', views.contact, name='contact'),
 path('terms/', views.terms, name='terms'),
-path('invoice/', views.invoice, name='invoice'),
+# path('invoice/', views.invoice, name='invoice'),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=MEDIA_ROOT)
+    urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+    # urlpatterns += static(settings.MEDIA_ROOT, document_root=MEDIA_ROOT)

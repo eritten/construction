@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <title> {% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <script src="{% static 'js/all.js' %}"></script>
+</head>
+<body> 
+ <nav>
+    <div class="nav-wrapper">
+        <div class="logo-box">
+            <div class="logo-img">
+                <img src="{% static 'img/logo.png' %}" alt="logo">
+            </div>
+            <h4>construction</h4>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="{% url 'home' %}">home</a>
+            </li>
+            <li>
+                <a href="#about">about us</a>
+            </li>
+            <li>
+                <a href="#services">services</a>
+            </li>
+            <li>
+                <a href="#projects">projects</a>
+            </li>
+            <li>
+                <a href="#contact">contact us</a>
+            </li>
+        </ul>
+        <button class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+ </nav>
+{% block content %}
+
+{% endblock %}
+<!-- footer -->
+<footer>
+    <div class="footer-wrapper">
+        <div class="mail-box">
+            <p>email: yes@gmail.com</p>
+            <p>tel: 0244 444 444</p>
+            <p>mobile: 0244 444 444</p>
+        </div>
+        <div class="address-box">
+            <p>address:</p>
+            <address>construction Ltd
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur, aliquid.</p>
+                <p>63-67 St my's Street</p>
+                <p>man city UG7 3EN</p>
+            </address>
+        </div>
+        <div class="social-box">
+            <a href="#n" aria-label="facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#n" aria-label="twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+<div class="outro">
+    <p>copyright &copy; 2023 construction limited | powered by sewonet</p>
+</div>
+<!-- end of footer -->
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+<!-- aos init -->
+<script>
+     AOS.init({
+        offset: 50,
+        delay: 100,
+        duration: 800,
+        easing: 'ease',
+        once: false,
+        mirror: false,
+        anchorPlacement: 'top-bottom'
+    })
+</script>
+</body>
+</html>
