@@ -25,6 +25,11 @@
                 <a href="#nb">our services</a>
             </div>
             <!-- end -->
+{% for prop in project %}
+<h1>{{prop.name}}
+<img src="{{prop.image.url}}" />
+</h1>
+
             <!-- start -->
             <div class="box" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon" tabindex="0" aria-label="icon of a hand holding a hand">
