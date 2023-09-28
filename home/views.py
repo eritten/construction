@@ -1,12 +1,10 @@
 from django.shortcuts import render
-from .models import  Project
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 # Create your views here.
 def home(request):
-    project = Project.objects.all()
-    return render(request, "home.html", {"project": project})
+    return render(request, "home.html")
 
 def about(request):
     return render(request, "about.html")

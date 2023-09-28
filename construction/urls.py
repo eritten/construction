@@ -3,6 +3,14 @@ from django.urls import path
 from home import views
 from django.conf import settings
 from django.conf.urls.static import static
+from home.sitemaps import HomeSitemap
+from django.contrib.sitemaps.views import sitemap
+from django.views.generic import TemplateView
+from django.contrib.sitemaps import GenericSitemap
+
+sitemaps = {
+    'home': HomeSitemap,
+}
 
 urlpatterns = [
 path('', views.home, name='home'),
@@ -11,6 +19,7 @@ path('contact/', views.contact, name='contact'),
 path('terms/', views.terms, name='terms'),
 # path('invoice/', views.invoice, name='invoice'),
     path('admin/', admin.site.urls),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),   
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
