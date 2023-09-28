@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import  Project
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 # Create your views here.
 def home(request):
@@ -17,3 +19,10 @@ def terms(request):
 
 def privacy(request):
     return render(request, "privacy.html")
+
+def In_voice(request):
+    return render(request, "In_voice.html")
+
+
+
+
