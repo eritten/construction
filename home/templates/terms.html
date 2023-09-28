@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<style>
+  .this-heading {
+    text-transform: uppercase;
+    color: var(--blueDeep);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    font-size: 2rem;
+    text-align: center;
+  }
+  .this-info {
+    font-size: 1.8rem !important;
+    color: var(--blue);
+  }
+</style>
+<section class="privacy" id="privacy" style="padding-top: 8rem; padding-bottom: 8rem;">
+    <div class="title">
+        <h2>terms of use</h2>
+    </div>
+    <div class="section-wrapper">
+        <div class="goals-wrapper">
+            <p class="info" style="line-height: 1.8;">Welcome to Halleluya Properties Limited. By accessing or using our website, you agree to comply with and be bound by the following Terms of Use. If you do not agree to these terms, please do not use our website.</p>
+            <ul class="goals-list">
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <p><span class="goal-title">Website Content:</span> All content on this website, including text, images, graphics, and other materials, is provided for informational purposes only. It is subject to change without notice.</p>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <p><span class="goal-title">Intellectual Property:</span> Unless otherwise noted, all content on this website is the property of Halleluya Properties Limited and is protected by copyright and other intellectual property laws. You may not reproduce, distribute, or use our content without our express written permission.</p>
+                </li>
+                <h4 class="this-heading">User Conduct</h4>
+                <p class="this-info">When using our website, you agree not to:</p>
+                <ul style="list-style: disc; padding: 2rem;">
+                    <li>Use the website in any way that may disrupt, damage, or impair its functionality.</li>
+                    <li>Use the website for any unlawful purpose or in violation of applicable laws and regulations.</li>
+                    <li>Engage in any conduct that could harm, defame, or invade the privacy of others.</li>
+                    <li>Attempt to gain unauthorized access to our website or its systems.</li>
+                </ul>
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <p><span class="goal-title">Third-Party Links:</span> Our website may contain links to third-party websites for your convenience. These links do not signify our endorsement of the linked websites, and we are not responsible for their content or practices. We encourage you to review the terms of use and privacy policies of any third-party websites you visit.</p>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <p><span class="goal-title">Disclaimer:</span>While we strive to provide accurate and up-to-date information on our website, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information, products, services, or related graphics contained on the website. Your use of any information or materials on this website is entirely at your own risk.</p>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <p><span class="goal-title">Limitation of Liability:</span> Halleluya Properties Limited, its affiliates, officers, directors, employees, agents, and suppliers shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, or use, arising out of or in any way connected with the use or performance of our website.</p>
+                </li>
+                <li data-aos="fade-up" data-aos-delay="100">
+                    <p><span class="goal-title">Changes to Terms of Use:</span> We reserve the right to modify these Terms of Use at any time. Please review these terms periodically for changes. Your continued use of our website after any modifications indicates your acceptance of the updated terms.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}

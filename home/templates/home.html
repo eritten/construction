@@ -1,13 +1,107 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<!-- alert when message sent -->
+<div class="alert-box" role="alert">
+    <p>message sent! we will reply you soon.</p>
+</div>
+<!-- end of alert when message sent -->
+<script>
+    // add vanish class to alert after 4 seconds
+    const alertBox = document.querySelector(".alert-box")
+
+    setTimeout(() => {
+        alertBox.classList.add("vanish")
+    }, 4000);
+</script>
 <!-- header -->
 <header>
+        <!-- slider container -->
+        <div class="slider-container">
+            <!-- slide-btn -->
+            <button class="prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <!-- end of slide-btn -->
+            <div class="slide">
+                <img src="{% static 'img/carousel/caro1.jpg' %}" alt="a construction image.">
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/carousel/caro2.jpg' %}" alt="a construction image.">
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/carousel/caro3.jpg' %}" alt="a construction image.">
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/carousel/caro4.jpg' %}" alt="a construction image.">
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/carousel/caro5.jpg' %}" alt="a construction image.">
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/carousel/caro6.jpg' %}" alt="a construction image.">
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/carousel/caro7.jpg' %}" alt="a construction image.">
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/carousel/caro8.jpg' %}" alt="a construction image.">
+            </div>
+            <div class="slide">
+                <img src="{% static 'img/carousel/caro9.jpg' %}" alt="a construction image.">
+            </div>
+        </div>
+        <!-- end of slider container -->
     <div class="header-content">
         <h1 data-aos="fade-left">Welcome to Halleluya Properties Limited.</h1>
         <p>Your trusted partner in construction and renovation services. With a commitment to excellence and a passion for innovation, we have been serving the needs of our clients in the construction industry since 2023.</p>
     </div>
 </header>
+<script>
+    // header carousel 
+    // assign variables
+const slideImage = document.querySelectorAll(".slide")
+const prevBtn = document.querySelector(".prev")
+const nextBtn = document.querySelector(".next")
+
+slideImage.forEach((image,index)=>{
+    image.style.left = `${index * 100}%`
+})
+
+let counter = 0
+
+prevBtn.addEventListener("click", ()=>{
+    counter--
+    carousel()
+})
+nextBtn.addEventListener("click", nextImage)
+
+function nextImage() {
+    counter++
+    carousel()
+}
+
+// function to move the images.
+function carousel(){
+    if(counter < 0){
+        counter = slideImage.length - 1
+    }
+    if (counter > slideImage.length - 1){
+        counter = 0
+    }
+    slideImage.forEach(image=>{
+        image.style.transform = `translateX(-${counter * 100}%)`
+    })
+}
+
+// change image automatically
+setInterval(() => {
+    nextImage()
+}, 5000);
+</script>
 <!-- end of header -->
 <!-- about section -->
 <section class="about" id="about">
@@ -15,6 +109,7 @@
         <h2>about us</h2>
     </div>
     <div class="section-wrapper">
+        <video src="{% static 'img/about-vid.mp4' %}" class="about-vid" autoplay muted loop></video>
         <div class="about-wrapper">
             <!-- start -->
             <div class="box" data-aos="fade-up" data-aos-delay="100">
@@ -50,7 +145,8 @@
             <!-- end -->
         </div>
         <div class="about-sub">
-            <p>At Halleluya Properties Limited, we are not just building structures; we are building dreams, relationships, and sustainable futures. Join us on this exciting journey as we redefine the art of construction and renovation, one remarkable project at a time.</p>
+            <p>At Halleluya Properties Limited, we are not just building structures; we are building dreams, relationships, and sustainable futures. Join us on this exciting journey as we redefine the art of construction and renovation, one remarkable project at a time.  </p>
+            <p>Interested in working with us? <br> <br><a href="#n">apply now!</a></p>
         </div>
     </div>
 </section>

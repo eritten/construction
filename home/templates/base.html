@@ -24,6 +24,7 @@
             <li>
                 <a href="{% url 'home' %}">home</a>
             </li>
+            {% if request.path == '/' %}
             <li>
                 <a href="#about">about us</a>
             </li>
@@ -36,6 +37,9 @@
             <li>
                 <a href="#contact">contact us</a>
             </li>
+            {% else %}
+            {# #}
+            {% endif %}
         </ul>
         <button class="menu-btn">
             <i class="fas fa-bars"></i>
@@ -49,12 +53,18 @@
 <footer>
     <div class="footer-wrapper">
         <div class="mail-box">
-            <p>Email: halleluyapropertieslimited@gmail.com</p>
-            <p>Tel: 0798648165</p>
+            <p>email: halleluyapropertieslimited@gmail.com</p>
+            <p>tel: 0798648165</p>
+            <div class="footer-links">
+                <a href="{% url 'privacy' %}">Privacy policy</a>
+                <a href="{% url 'terms' %}">Terms of use</a>
+                <a href="#n">Sitemaps</a>
+            </div>
         </div>
         <div class="Address-box">
             <p>address:</p>
-            <address>Halleluya Properties Ltd
+            <address>
+                Halleluya Properties Limited
                 <p>151 Burnaby Road, Coventry,</p>
                 <p>CV6 4AX</p>
             </address>
