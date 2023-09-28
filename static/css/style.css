@@ -177,6 +177,51 @@ nav {
     border: none;
     display: none;
 }
+/* slider container */
+.slider-container {
+    position: relative;
+    overflow: hidden;
+}
+.slider-container .slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: .6s;
+    -webkit-transition: .6s;
+    /* transform: translateX(-100%); */
+}
+.slider-container .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slider-container button {
+    display: inline-block;
+    font-size: 6rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(200,189,199,.1);
+    padding: 0.2rem;
+    color: rgba(105, 101, 101,.6);
+    transition: .5s;
+    -webkit-transition: .5s;
+    z-index: 2; 
+}
+.slider-container button:hover,
+.slider-container button:focus {
+    background: rgba(200,189,199,.5);
+    color: rgba(15, 11, 11);
+}
+.slider-container .prev {
+    left: 0;
+}
+.slider-container .next {
+    right: 0;
+}
+/* end of slider container */
 header {
     width: 100%;
     height: 100vh;
@@ -191,12 +236,27 @@ header {
     justify-content: center;
     align-items: center;
 }
+header .header-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+}
 header h1 {
     color: var(--white);
     font-size: 4rem;
     text-align: center;
     text-transform: capitalize;
     text-shadow: -8px -1px 4px rgb(0 0 0 / 80%);
+}
+header p {
+    text-align: center;
+    color: var(--white);
+    max-width: 550px;
+    font-size: 2rem;
 }
 @media (max-width: 768px) {
     .menu-btn {
@@ -238,7 +298,7 @@ header h1 {
     gap: 2rem;
 }
 .about-wrapper .box {
-    width: 33.33%;
+    flex: 1;
     padding: 1rem;
     /* box-shadow: var(--box-shadow); */
     box-shadow: 3px 5px 9px 0px rgb(0 0 0 / 20%);
@@ -250,11 +310,11 @@ header h1 {
     border-radius: 6px;
 }
 .about-wrapper .box .icon {
-    padding: 1rem;
+    padding: .5rem;
     width: 100%;
     background: var(--pink);
     color: var(--white);
-    font-size: 4rem;
+    font-size: 3rem;
     border-radius: 30px;
 }
 .about-wrapper .box h4 {
@@ -264,6 +324,12 @@ header h1 {
 }
 .about-wrapper .box p {
     color: var(--grayDeep);
+    height: 20rem;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.about-wrapper .box p::-webkit-scrollbar-button {
+    height: 20px;
 }
 .section-wrapper .box a {
     padding: 0.5rem 1rem;
@@ -323,6 +389,7 @@ header h1 {
     }
     .about-wrapper .box {
         width: 100%;
+        flex: none;
     }
 }
 /* end of about */
@@ -349,9 +416,9 @@ header h1 {
 .about {
     text-align: center;
 }
-.about p {
+/* .about p {
     margin-bottom: 1rem;
-}
+} */
 .about-divider {
     width: 100%;
     padding: 2rem;
@@ -373,6 +440,25 @@ header h1 {
     box-shadow: var(--box-shadow);
 }
 /* end of about */
+/* goals */
+.goals-wrapper {
+    padding: 1rem;
+}
+.goals-wrapper .goals-list {
+    
+    & li {
+        padding: 1rem;
+        border-radius: 10px;
+        line-height: 1.5;
+        margin-bottom: .5rem;
+    }
+}
+.goals-list .goal-title {
+    text-transform: uppercase;
+    color: var(--blue);
+    letter-spacing: 1px;
+}
+/* end of goals */
 /* service section */
 .services {
     background: var(--light-bg);
@@ -419,6 +505,13 @@ header h1 {
     font-size: 1.5rem;
     overflow-y: scroll;
     border-radius: 6px;
+    scroll-padding-top: 10px;
+}
+.services .service-grid .service-box p::-webkit-scrollbar {
+    width: 8px;
+}
+.services .service-grid .service-box p::-webkit-scrollbar-button {
+    height: 20px;
 }
 @media (max-width: 480px) {
     .services .service-grid {
@@ -442,7 +535,7 @@ header h1 {
 }
 .contact .contact-wrapper .img-box {
     min-width: 30rem;
-    height: 45rem;
+    height: 38.5rem;
     flex: 1;
 }
 .contact .contact-wrapper .img-box img {
@@ -469,6 +562,7 @@ header h1 {
     border-bottom: var(--border);
     padding: 2rem 0;
     resize: none;
+    font-family: inherit;
 }
 .contact .contact-wrapper .contact-box .contact-form textarea {
     height: 10rem;
@@ -486,6 +580,7 @@ header h1 {
     }
 }
 /* end of media query for contact */
+
 /* end of contact section */
 /* footer */
 footer{
@@ -498,6 +593,20 @@ footer{
     gap: 2rem;
     font-size: 2rem;
     line-height: 1.6;
+}
+.footer-wrapper .footer-links {
+    & a {
+        display: block;
+        color: var(--blueDeep);
+        font-weight: bold;
+        text-transform: capitalize;
+        transition: .5s;
+        -webkit-transition: .5s;
+
+        &:is(:hover, :focus) {
+            color: var(--blue);
+        }
+    }
 }
 .social-box {
     display: flex;
