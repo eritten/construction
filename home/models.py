@@ -41,7 +41,7 @@ class Application(models.Model):
     cover_letter = models.FileField(upload_to='cover_letters/', validators=[FileExtensionValidator(['pdf', 'doc', 'jpg', 'png'])])
     signature = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
-    
+    form_id = models.CharField(max_length=100)
     def __str__(self):
         return self.full_name
     
