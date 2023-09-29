@@ -11,15 +11,30 @@ import string
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
-
+# generated random string should be 10 characters long comprising number and letters
 def randomString(stringLength=10):
-    letters = string.ascii_lowercase
-    return ''.join(random.choice(letters) for i in range(stringLength)) 
-
+    lettersAndDigits = string.ascii_letters + string.digits
+    return ''.join(random.choice(lettersAndDigits) for i in range(stringLength))
 # Create your views here.
 def home(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        # sending email to the user. the company name is halleluya properties limited
+        subject = 'Message Received'
+        # email message should be string
+        message = f"Dear {name}, \nYour Message has been received. \nWe will get back to you shortly. \nThanks for your interest in Halleluya Properties Limited. \nBest Regards, \n\nHalleluya Properties Limited"
+        send_mail(
+            subject,
+            message,
+            settings.EMAIL_HOST_USER,
+            [email],
+            fail_silently=False)
+        send_mail("Message Alert", "A new message has been received.\nCheck the admin pannel to review the message. \nhttps://www.hplimited.com/admin", settings.EMAIL_HOST_USER, [], fail_silently=False)
+        messages.success(request, 'Your Message has been submitted successfully!')
+#        return redirect('home')
     return render(request, "home.html")
-
 
 
 def terms(request):
@@ -27,12 +42,6 @@ def terms(request):
 
 def privacy(request):
     return render(request, "privacy.html")
-
-
-
-
-
-
 
 def application(request):
     form = ApplicationForm()
@@ -48,10 +57,16 @@ def application(request):
             subject = 'Application Received'
             
             # email message should be string
-            message = f"Dear {form.cleaned_data.get('first_name')}, \n\nYour Application has been received. \n\nYour Application ID is {form_id}. \n\nWe will get back to you shortly. \n\nThanks for your interest in Halleluya Properties Limited. \n\nBest Regards, \n\nHalleluya Properties Limited"
-            # sending email alert to the company
-            # sending email to the company
+            message = f"Dear {form.cleaned_data.get('full_name')}, \nYour Application has been received. \nYour Application ID is {form_id}. \nWe will get back to you shortly. \nThanks for your interest in Halleluya Properties Limited. \nBest Regards, \n\nHalleluya Properties Limited"
+            send_mail(
+                subject,
+                message,
+                settings.EMAIL_HOST_USER,
+                [form.cleaned_data.get('email')],
+                fail_silently=False)
+            send_mail("Emploiment Application Alert", "A new application has been received.\nCheck the admin pannel to review the application. \nhttps://www.hplimited.com/admin", settings.EMAIL_HOST_USER, [], fail_silently=False)
             return redirect('home')
     context = {'form': form}
     return render(request, 'application.html', context)
+
 

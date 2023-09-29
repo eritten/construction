@@ -19,7 +19,8 @@ path('terms/', views.terms, name='terms'),
 # path('invoice/', views.invoice, name='invoice'),
     path('admin/', admin.site.urls),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name="sitemap"),
-    path("job-application/", views.application, name='job_application'),   
+    path("job-application/", views.application, name='job_application'),
+    #path('contact/', views.contact, name='contact'),   
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

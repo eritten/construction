@@ -7,7 +7,7 @@ class HomeSitemap(Sitemap):
     changefreq = 'daily'
 
     def items(self):
-        return ['home', 'privacy', 'terms']
+        return ['home', 'privacy', 'terms', 'job_application']
 
     def location(self, item):
         return reverse(item)

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <title> Home {% block title %} {% endblock %}</title>
+    <title> Halleluya {% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
     <script src="{% static 'js/all.js' %}"></script>
@@ -97,6 +97,14 @@
         mirror: false,
         anchorPlacement: 'top-bottom'
     })
+
+
+    // clearing local storage to prevent form resubmission
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+
+    document.getElementById("id_available_positions").focus()
 </script>
 </body>
 </html>
