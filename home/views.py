@@ -20,11 +20,7 @@ def randomString(stringLength=10):
 def home(request):
     return render(request, "home.html")
 
-def about(request):
-    return render(request, "about.html")
 
-def contact(request):
-    return render(request, "contact.html")
 
 def terms(request):
     return render(request, "terms.html")
@@ -32,8 +28,6 @@ def terms(request):
 def privacy(request):
     return render(request, "privacy.html")
 
-def In_voice(request):
-    return render(request, "In_voice.html")
 
 
 
@@ -45,9 +39,18 @@ def application(request):
     if request.method == "POST":
         form = ApplicationForm(request.POST, request.FILES)
         if form.is_valid():
+            # generating random form id
+            form_id = randomString(10)
+            form.instance.form_id = form_id
             form.save()
             messages.success(request, 'Your Application has been submitted successfully!')
-        
+            # sending email to the user. the company name is halleluya properties limited
+            subject = 'Application Received'
+            
+            # email message should be string
+            message = f"Dear {form.cleaned_data.get('first_name')}, \n\nYour Application has been received. \n\nYour Application ID is {form_id}. \n\nWe will get back to you shortly. \n\nThanks for your interest in Halleluya Properties Limited. \n\nBest Regards, \n\nHalleluya Properties Limited"
+            # sending email alert to the company
+            # sending email to the company
             return redirect('home')
     context = {'form': form}
     return render(request, 'application.html', context)

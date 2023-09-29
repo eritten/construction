@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
+<!-- django message for the alert -->
+
+
 <!-- alert when message sent -->
+{% if messages %}
+{% for message in messages %}
 <div class="alert-box" role="alert">
-    <p>message sent! we will reply you soon.</p>
+{{message}}
 </div>
+{% endfor %}
+{% endif %}
 <!-- end of alert when message sent -->
 <script>
     // add vanish class to alert after 4 seconds
