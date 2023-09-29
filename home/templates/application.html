@@ -4,10 +4,19 @@ Application forms
 {% endblock %}
 
 {% block content %}
-<h1>Fill the below form to apply for a job at Halleluya Property Limited</h1>
-<form action="" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">    
-</form>
+<style>
+   
+</style>
+<section class="apply">
+    <div class="section-wrapper">
+        <div class="apply-wrapper">
+            <h1 align="center">Fill the below form to apply for a job at Halleluya Property Limited</h1>
+            <form action="" method="post" class="apply-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Submit">    
+            </form>
+        </div>
+    </div>
+</section>
 {% endblock %}
