@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1q(zk-2n*!xm^lmc7%o9lhsz(iml^0h17b1_52^#-yv07nfbk+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -141,10 +141,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.itsreaddy.com'
-EMAIL_HOST_USER = 'support@itsreaddy.com'
-EMAIL_HOST_PASSWORD = '!Store526$'
+EMAIL_HOST = 'mail.halleluyapropertieslimited.com'
+EMAIL_HOST_USER = 'support@halleluyapropertieslimited.com'
+EMAIL_HOST_PASSWORD = 'Halleluya$1234$'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'support@itsreaddy.com'
+DEFAULT_FROM_EMAIL = 'info@halleluyapropertieslimited.com'
 

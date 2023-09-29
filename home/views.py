@@ -11,6 +11,8 @@ import string
 from django.conf import settings
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
+from .models import Member
+
 # generated random string should be 10 characters long comprising number and letters
 def randomString(stringLength=10):
     lettersAndDigits = string.ascii_letters + string.digits
@@ -70,3 +72,18 @@ def application(request):
     return render(request, 'application.html', context)
 
 
+@api_view(['POST'])
+def register(request):
+    name = request.data.get('name')
+    email = request.data.get('email')
+    # check if the user already exist by name or email
+    if Member.objects.filter(name=name).exists():
+        return Response({"message": "This name already exist"})
+    elif Member.objects.filter(email=email).exists():
+        return Response({"message": "This email already exist"})
+    else:
+        # save the user to the database
+        member = Member.objects.create(name=name, email=email)
+        member.save()
+        return Response({"message": "You have successfully registered"})
+    

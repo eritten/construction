@@ -105,6 +105,39 @@
     }
 
     document.getElementById("id_available_positions").focus()
+    //making ajax post request to add new member to the newsletter
+document.getElementById("add").onclick = function(e) {
+    var name = document.getElementById("name").value
+    var email = document.getElementById("email").value
+   fetch(location.host + "/register/", {
+       method: "POST",
+       headers: {
+           "Content-Type": "application/json",
+           "X-CSRFToken": "{{ csrf_token }}"
+       },
+       body: JSON.stringify({
+           "name": name,
+           "email": email
+       })
+   })
+    .then(response => response.json())
+    .then(result => {
+        console.log(result)
+        if (result.status == 200) {
+            document.getElementById("name").value = ""
+            document.getElementById("email").value = ""
+            document.getElementById("message").innerHTML = result.message
+        } else {
+            document.getElementById("message").innerHTML = result.message
+        }
+    })
+    .catch(error => {
+        console.log(error)
+    })
+    
+
+
+}
 </script>
 </body>
 </html>

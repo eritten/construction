@@ -49,3 +49,19 @@ class Application(models.Model):
         return self.full_name
     
  
+ 
+ 
+#  creating members model this will have one to many with news letter moder. whenever news is added signals will be sent to members model to send email to all members
+class Member(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    def __str__(self):
+        return self.email
+    
+#  creating news letter model this will have one to many with news letter moder. whenever news is added signals will be sent to members model to send email to all members
+class NewsLetter(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.title
