@@ -352,13 +352,17 @@ setInterval(() => {
 <!-- end of contact section -->
  <!-- subscribe section -->
  <section class="subscribe" id="subscribe">
+     <div class="newsletter-toast-box" role="alert">
+         <p class="newsletter-msg">you have subscribed.</p>
+    </div>
     <div class="section-wrapper">
         <div class="sub-box">
             <h3>Subscribe for latest updates</h3>
             <div class="sub-form">
-                <input type="text" id="newsletter-name" placeholder="enter name">
-                <input type="email" id="newsletter-email" placeholder="enter email">
-                <input type="submit" class="all-btns" value="subscribe">
+                <input type="text" id="news-name" class="sub-input" placeholder="enter name" required>
+                <input type="email" id="news-email" placeholder="enter email" class="sub-input" required>
+                <p id="validate-msg" role="alert"></p>
+                <input type="submit" class="all-btns" id="news-add" value="subscribe">
             </div>
         </div>
     </div>

@@ -336,8 +336,24 @@ header p {
 
 }
 @media (max-width: 480px) {
+    .title {
+        margin: 2rem auto;
+    }
+    .title h2 {
+        font-size: 2rem;
+    }
+    body {
+        font-size: 1.6rem!important;
+    }
     header {
         background-size: 100% 100%;
+    }
+    header h1 {
+        font-size: 2.5rem;
+    }
+    header p {
+        font-size: 1rem;
+        max-width: 80%;
     }
 }
 /* end of nav and header */
@@ -440,6 +456,10 @@ header p {
         width: 100%;
         flex: none;
     }
+    .about .about-vid {
+        width: 100%;
+        height: 20rem;
+    }
 }
 /* end of about */
 /* about */
@@ -507,6 +527,13 @@ header p {
     color: var(--blue);
     letter-spacing: 1px;
 }
+@media (max-width: 480px) {
+    .goals-list {
+        & li {
+            margin-bottom: 0!important;
+        }
+    } 
+}
 /* end of goals */
 /* service section */
 .services {
@@ -567,6 +594,13 @@ header p {
     .services .service-grid {
         grid-template-columns: repeat(auto-fit, minmax(20rem,1fr));
         gap: 1rem;
+    }
+    .services .service-grid .service-box {
+        padding: 1rem;
+    }
+    .services .service-grid .service-box .img-box {
+        width: 4rem;
+        height: 4rem;
     }
 }
 /* end of service section */
@@ -706,13 +740,40 @@ header p {
     background-attachment: fixed;
     background-repeat: no-repeat;
     min-height: 30rem;
+    position: relative;
+}
+.subscribe .newsletter-toast-box {
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    padding: 3rem;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 1rem;
+    right: 2rem;
+    background-color: var(--yellow);
+    border-radius: 6px;
+    box-shadow: var(--box-shadow);
+    color: white;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    max-width: 90%;
+    transition: transform 3s ease, visibility 1s 3s;
+}
+.subscribe .newsletter-toast-box.vanish {
+    transform: translateX(1000%);
+    visibility: hidden;
 }
 .subscribe .sub-box {
     position: relative;
     padding: 2rem;
     margin-left: auto;
     max-width: 35rem;
-    background: rgba(0,0,0,.1);
+    background: rgba(0,0,0,.4);
+    border-radius: 10px;
 }
 .sub-box h3 {
     color: var(--white);
@@ -729,11 +790,30 @@ header p {
     width: 100%;
     padding: 1rem;
     border-radius: 6px;
+    text-transform: capitalize;
 }
 .sub-box .sub-form input[type="submit"] {
     width: 50%;
     margin: 0 auto;
     font-size: 1.8rem;
+    pointer-events: none;
+    transition: .5s;
+    -webkit-transition: .5s;
+}
+.sub-box .sub-form input[type="submit"].active {
+    pointer-events: all;
+    background-color: var(--yellow);
+    color: var(--white);
+}
+#news-email {
+    margin-bottom: 0.1rem;
+}
+#validate-msg {
+    color: rgb(164, 12, 12);
+    font-weight: bold;
+    background-color: rgba(255, 255, 255,.5);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 @media (max-width: 480px) {
     .subscribe .sub-box {
@@ -812,6 +892,16 @@ footer{
     .outro {
         font-size: 2rem;
         padding: 4rem;
+    }
+}
+@media (max-width: 480px) {
+    .social-box a {
+        width: 30px;
+        height: 30px;
+        font-size: 2rem;
+    }
+    .outro {
+        font-size: 1.5rem;
     }
 }
 /* end of footer */
