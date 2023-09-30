@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <title> Home {% block title %} {% endblock %}</title>
+    <title> Halleluya {% block title %} {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
     <script src="{% static 'js/all.js' %}"></script>
@@ -97,6 +97,47 @@
         mirror: false,
         anchorPlacement: 'top-bottom'
     })
+
+
+    // clearing local storage to prevent form resubmission
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+
+    document.getElementById("id_available_positions").focus()
+    //making ajax post request to add new member to the newsletter
+document.getElementById("add").onclick = function(e) {
+    var name = document.getElementById("news-name").value
+    var email = document.getElementById("news-email").value
+   fetch(location.host + "/register/", {
+       method: "POST",
+       headers: {
+           "Content-Type": "application/json",
+           "X-CSRFToken": "{{ csrf_token }}"
+       },
+       body: JSON.stringify({
+           "name": name,
+           "email": email
+       })
+   })
+    .then(response => response.json())
+    .then(result => {
+        console.log(result)
+        if (result.status == 200) {
+            document.getElementById("news-name").value = ""
+            document.getElementById("news-email").value = ""
+            document.getElementById("news-message").innerHTML = result.message
+        } else {
+            document.getElementById("news-message").innerHTML = result.message
+        }
+    })
+    .catch(error => {
+        console.log(error)
+    })
+    
+
+
+}
 </script>
 </body>
 </html>

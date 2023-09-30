@@ -2,10 +2,18 @@
 
 {% load static %}
 {% block content %}
+
+<!-- django message for the alert -->
+
+
 <!-- alert when message sent -->
+{% if messages %}
+{% for message in messages %}
 <div class="alert-box" role="alert">
-    <p>message sent! we will reply you soon.</p>
+{{message}}
 </div>
+{% endfor %}
+{% endif %}
 <!-- end of alert when message sent -->
 <script>
     // add vanish class to alert after 4 seconds
@@ -330,10 +338,11 @@ setInterval(() => {
             </div>
             <div class="contact-box" data-aos="flip-right" data-aos-delay="400">
                 <h2>get in touch</h2>
-                <form action="#" class="contact-form">
-                    <input type="text" placeholder="name">
-                    <input type="email" placeholder="email">
-                    <textarea placeholder="message"></textarea>
+                <form action="{% url 'home' %}" class="contact-form" method="POST">
+                    {% csrf_token %}
+                    <input type="text" placeholder="name" name="name" required>
+                    <input type="email" placeholder="email" name="email" required>
+                    <textarea name="message" placeholder="message" required></textarea>
                     <input type="submit" value="send message" class="all-btns">
                 </form>
             </div>
