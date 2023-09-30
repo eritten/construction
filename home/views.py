@@ -22,18 +22,19 @@ def home(request):
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
-        message = request.POST.get('message')
+        msg= request.POST.get('message')
         # sending email to the user. the company name is halleluya properties limited
         subject = 'Message Received'
         # email message should be string
-        message = f"Dear {name}, \nYour Message has been received. \nWe will get back to you shortly. \nThanks for your interest in Halleluya Properties Limited. \nBest Regards, \n\nHalleluya Properties Limited"
+        message = f"Dear {name.capitalize()}, \nYour Message has been received. \nWe will get back to you shortly. \nThanks for your interest in Halleluya Properties Limited. \nBest Regards, \n\nHalleluya Properties Limited"
         send_mail(
             subject,
             message,
             settings.EMAIL_HOST_USER,
             [email],
             fail_silently=False)
-        send_mail("Message Alert", "A new message has been received.\nCheck the admin pannel to review the message. \nhttps://www.hplimited.com/admin", settings.EMAIL_HOST_USER, [], fail_silently=False)
+        send_mail(f"Message Alert from {name.capitalize()}", msg + f"\nCustomer email:\n{email}", email, ['halleluyapropertieslimited@gmail.com'], fail_silently=False)
+#        send_mail("Message Alert", f"Name: {name}\nEmail: {email}\nMessage: {message}", settings.EMAIL_HOST_USER, ['
         messages.success(request, 'Your Message has been submitted successfully!')
 #        return redirect('home')
     return render(request, "home.html")

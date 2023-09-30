@@ -107,8 +107,8 @@
     document.getElementById("id_available_positions").focus()
     //making ajax post request to add new member to the newsletter
 document.getElementById("add").onclick = function(e) {
-    var name = document.getElementById("name").value
-    var email = document.getElementById("email").value
+    var name = document.getElementById("news-name").value
+    var email = document.getElementById("news-email").value
    fetch(location.host + "/register/", {
        method: "POST",
        headers: {
@@ -124,11 +124,11 @@ document.getElementById("add").onclick = function(e) {
     .then(result => {
         console.log(result)
         if (result.status == 200) {
-            document.getElementById("name").value = ""
-            document.getElementById("email").value = ""
-            document.getElementById("message").innerHTML = result.message
+            document.getElementById("news-name").value = ""
+            document.getElementById("news-email").value = ""
+            document.getElementById("news-message").innerHTML = result.message
         } else {
-            document.getElementById("message").innerHTML = result.message
+            document.getElementById("news-message").innerHTML = result.message
         }
     })
     .catch(error => {
