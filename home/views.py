@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import status
 from  .forms import  ApplicationForm
 # importing send_mail function
 from django.core.mail import send_mail
@@ -78,10 +79,10 @@ def register(request):
     name = request.data.get('name')
     email = request.data.get('email')
     # check if the user already exist by name or email
-    if Member.objects.filter(name=name).exists():
-        return Response({"message": "This name already exist"})
-    elif Member.objects.filter(email=email).exists():
-        return Response({"message": "This email already exist"})
+#    if Member.objects.filter(name=name).exists():
+#        return Response({"message": "This name already exist", "status": status.HTTP_400_BAD_REQUEST})
+    if Member.objects.filter(email=email).exists():
+        return Response({"message": "This email already exist", "status": status.HTTP_400_BAD_REQUEST})
     else:
         # save the user to the database
         member = Member.objects.create(name=name, email=email)
