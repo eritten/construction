@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Your trusted partner in construction and renovation services. With a commitment to excellence and a passion for innovation, we have been serving the needs of our clients in the construction industry since 2023.">
     <title> Halleluya {% block title %} {% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'img/fav.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
     <script src="{% static 'js/all.js' %}"></script>
@@ -18,7 +19,6 @@
             <div class="logo-img">
                 <img src="{% static 'img/logo.png' %}" alt="logo">
             </div>
-            <h5>Halleluya</h5>
         </div>
         <ul class="nav-list">
             <li>
@@ -53,8 +53,8 @@
 <footer>
     <div class="footer-wrapper">
         <div class="mail-box">
-            <p>email: info@halleluyapropertieslimited.com</p>
-            <p>tel: 0798648165</p>
+            <p><i class="fas fa-envelope"></i> email: info@halleluyapropertieslimited.com</p>
+            <p><i class="fas fa-phone"></i> tel: 0798648165</p>
             <div class="footer-links">
                 <a href="{% url 'privacy' %}">Privacy policy</a>
                 <a href="{% url 'terms' %}">Terms of use</a>
@@ -130,7 +130,38 @@ alert("hello")
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }
+<<<<<<< HEAD
     document.getElementById("id_available_positions").focus()
+=======
+
+    // document.getElementById("id_available_positions").focus()
+
+    //making ajax post request to add new member to the newsletter
+    const submitBtn = document.querySelector("#news-add")
+    
+    submitBtn.addEventListener('click', ()=>{
+        
+        var name = document.getElementById("news-name").value
+        var email = document.getElementById("news-email").value
+        var message = document.getElementById("news-msg")
+        const csrftoken = '{{ csrf_token }}'
+        fetch("http://" + location.host + "/register/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": csrftoken
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email
+            })
+        }).then(res =>{res.json()}).then(data =>{
+            // console.log(data)
+        }).catch(err => console.log(err))
+
+    })
+
+>>>>>>> d1c4e7c4a5e1e13e586e19b6778a6afe5c2e27ed
 </script>
 </body>
 </html>
