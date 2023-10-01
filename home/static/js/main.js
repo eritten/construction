@@ -19,7 +19,8 @@ window.addEventListener("load", () => {
     menuBtn.innerHTML = `<i class="fas fa-bars"></i>`;
   });
   // newsletter toast
-  const newsToast = document.querySelector(".newsletter-toast-box");
+  const subscribeSec = document.querySelector("#subscribe")
+  const newsToast = subscribeSec.querySelector(".newsletter-toast-box");
 
   setTimeout(() => {
     newsToast.classList.add("vanish");
@@ -32,7 +33,6 @@ window.addEventListener("load", () => {
   //   newsSubmitBtn.addEventListener("click", subscribeToNewsletter);
 
   // if name and email is empty, disable submit button
-
   // subscribe email validation
   const validateEmail = (email) => {
     // this patern checks for correct format of email

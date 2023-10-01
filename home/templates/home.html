@@ -339,9 +339,9 @@ setInterval(() => {
                 <h2>get in touch</h2>
                 <form action="{% url 'home' %}" class="contact-form" method="POST">
                     {% csrf_token %}
-                    <input type="text" placeholder="name" name="name" required>
-                    <input type="email" placeholder="email" name="email" required>
-                    <textarea name="message" placeholder="message" required></textarea>
+                    <input type="text" placeholder="name" name="name" required autocomplete="name">
+                    <input type="email" placeholder="email" name="email" required autocomplete="email">
+                    <textarea name="message" placeholder="message" required autocomplete="on"></textarea>
                     <input type="submit" value="send message" class="all-btns">
                 </form>
             </div>
@@ -351,9 +351,7 @@ setInterval(() => {
 <!-- end of contact section -->
  <!-- subscribe section -->
  <section class="subscribe" id="subscribe">
-     <div class="newsletter-toast-box" role="alert">
-         <p class="newsletter-msg">you have subscribed.</p>
-    </div>
+    
     <div class="section-wrapper">
         <div class="sub-box">
             <h3>Subscribe for latest updates</h3>
@@ -361,7 +359,7 @@ setInterval(() => {
                 <input type="text" id="news-name" class="sub-input" placeholder="enter name" required>
                 <input type="email" id="news-email" placeholder="enter email" class="sub-input" required>
                 <p id="validate-msg" role="alert"></p>
-                <input type="submit" class="all-btns" value="Subscribe" id="news-add">
+                <input type="submit" class="all-btns" value="Subscribe" id="news-add" disabled>
             </div>
         </div>
     </div>

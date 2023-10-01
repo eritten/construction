@@ -746,7 +746,7 @@ header p {
     position: absolute;
     width: max-content;
     height: max-content;
-    padding: 3rem;
+    padding: 2rem;
     z-index: 100;
     display: flex;
     justify-content: center;

@@ -53,8 +53,8 @@
 <footer>
     <div class="footer-wrapper">
         <div class="mail-box">
-            <p><i class="fas fa-envelope"></i> email: info@halleluyapropertieslimited.com</p>
-            <p><i class="fas fa-phone"></i> tel: 0798648165</p>
+            <p><i class="fas fa-envelope"></i> Email: info@halleluyapropertieslimited.com</p>
+            <p><i class="fas fa-phone"></i> Tel: +44798648165</p>
             <div class="footer-links">
                 <a href="{% url 'privacy' %}">Privacy policy</a>
                 <a href="{% url 'terms' %}">Terms of use</a>
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="Address-box">
-            <p>address:</p>
+            <p>Address:</p>
             <address>
                 Halleluya Properties Limited
                 <p>151 Burnaby Road, Coventry,</p>
@@ -113,7 +113,6 @@
         
         var name = document.getElementById("news-name").value
         var email = document.getElementById("news-email").value
-        var message = document.getElementById("news-msg")
         const csrftoken = '{{ csrf_token }}'
         fetch("http://" + location.host + "/register/", {
             method: "POST",
@@ -125,9 +124,16 @@
                 name: name,
                 email: email
             })
-        }).then(res =>{res.json()}).then(data =>{
-            // console.log(data)
-        }).catch(err => console.log(err))
+        }).then(res => res.json()).then(data =>{
+            const subscribeSection = document.querySelector("#subscribe")
+                subscribeSection.innerHTML += ` 
+                <div class="newsletter-toast-box" role="alert">
+                    <p class="newsletter-msg">${data.message}</p>
+                </div>`
+                setTimeout(() => {
+                    location.reload()
+                }, 5000);
+        }).catch(err => alert(err))
 
     })
 
