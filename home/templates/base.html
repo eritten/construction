@@ -98,48 +98,39 @@
         anchorPlacement: 'top-bottom'
     })
 
-
-    // clearing local storage to prevent form resubmission
+document.getElementById("news-add").onclick = function() {
+//making fetch post request to subscribe
+var name = document.getElementById("news-name").value
+var email = document.getElementById("news-email").value
+var message = document.getElementById("news-msg")
+fetch(local.host + "/register/", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    //    "X-CSRFToken": csrftoken without django  }
+    
+    },
+    body: JSON.stringify({
+        name: name,
+        email: email
+    })
+})
+.then(response => response.json())
+.then(result => {
+    if (result.error) {
+        message.innerHTML = result.error
+    } else {
+        alert("You have successfully subscribed to our newsletter")
+        message.innerHTML = result.message
+    }
+}
+}
+alert("hello")
+// clearing local storage to prevent form resubmission
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
     }
-
     document.getElementById("id_available_positions").focus()
-    //making ajax post request to add new member to the newsletter
-document.getElementById("news-add").onclick = function(e) {
-    alert("hello")
-
-    var name = document.getElementById("news-name").value
-    var email = document.getElementById("news-email").value
-   fetch(location.host + "/register/", {
-       method: "POST",
-       headers: {
-           "Content-Type": "application/json",
-           "X-CSRFToken": "{{ csrf_token }}"
-       },
-       body: JSON.stringify({
-           "name": name,
-           "email": email
-       })
-   })
-    .then(response => response.json())
-    .then(result => {
-        console.log(result)
-        if (result.status == 200) {
-            document.getElementById("news-name").value = ""
-            document.getElementById("news-email").value = ""
-            document.getElementById("news-message").innerHTML = result.message
-        } else {
-            document.getElementById("news-message").innerHTML = result.message
-        }
-    })
-    .catch(error => {
-        console.log(error)
-    })
-    
-
-
-}
 </script>
 </body>
 </html>
