@@ -106,7 +106,9 @@
 
     document.getElementById("id_available_positions").focus()
     //making ajax post request to add new member to the newsletter
-document.getElementById("add").onclick = function(e) {
+document.getElementById("news-add").onclick = function(e) {
+    alert("hello")
+
     var name = document.getElementById("news-name").value
     var email = document.getElementById("news-email").value
    fetch(location.host + "/register/", {
