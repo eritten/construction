@@ -51,10 +51,12 @@ window.addEventListener("load", () => {
       validateMsg.textContent = "valid email";
       validateMsg.style.color = "green";
       newsSubmitBtn.classList.add("active")
+      newsSubmitBtn.disabled = false
     } else {
       validateMsg.textContent = "invalid email";
       validateMsg.style.color = "red";
       newsSubmitBtn.classList.remove("active")
+      newsSubmitBtn.disabled = true
     }
     if (emailValue == "") {
       validateMsg.textContent = "";

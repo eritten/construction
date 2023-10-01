@@ -796,12 +796,10 @@ header p {
     width: 50%;
     margin: 0 auto;
     font-size: 1.8rem;
-    pointer-events: none;
     transition: .5s;
     -webkit-transition: .5s;
 }
 .sub-box .sub-form input[type="submit"].active {
-    pointer-events: all;
     background-color: var(--yellow);
     color: var(--white);
 }
