@@ -97,35 +97,6 @@
         mirror: false,
         anchorPlacement: 'top-bottom'
     })
-
-document.getElementById("news-add").onclick = function() {
-//making fetch post request to subscribe
-var name = document.getElementById("news-name").value
-var email = document.getElementById("news-email").value
-var message = document.getElementById("news-msg")
-fetch(local.host + "/register/", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    //    "X-CSRFToken": csrftoken without django  }
-    
-    },
-    body: JSON.stringify({
-        name: name,
-        email: email
-    })
-})
-.then(response => response.json())
-.then(result => {
-    if (result.error) {
-        message.innerHTML = result.error
-    } else {
-        alert("You have successfully subscribed to our newsletter")
-        message.innerHTML = result.message
-    }
-}
-}
-alert("hello")
 // clearing local storage to prevent form resubmission
     if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
@@ -159,7 +130,7 @@ alert("hello")
                 </div>`
                 setTimeout(() => {
                     location.reload()
-                }, 5000);
+                }, 4000);
         }).catch(err => alert(err))
 
     })
