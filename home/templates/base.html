@@ -112,7 +112,7 @@
         var name = document.getElementById("news-name").value
         var email = document.getElementById("news-email").value
         const csrftoken = '{{ csrf_token }}'
-        fetch("http://" + location.host + "/register/", {
+        fetch("https://" + location.host + "/register/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
